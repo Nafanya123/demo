@@ -40,32 +40,18 @@ public class CityController {
         return model;
     }
 
-    @RequestMapping(value = "/www", method = RequestMethod.GET)
-    public ModelAndView www() {
-        List<City> all = cityServiceImpl.getAll();
-        ModelAndView model = new ModelAndView("www");
-        model.addObject("www", all);
-        return model;
-    }
 
     @RequestMapping(value="/form", method=RequestMethod.GET)
-    public String cit(Model model) {
-        model.addAttribute("form", city);
-        return "form";
-    }
-    /*@RequestMapping(value="/form", method=RequestMethod.GET)
     public ModelAndView formForm(ModelAndView model) {
-
         model = new ModelAndView("form");
-        model.addObject("form");
+        model.addObject("form", *сюда я должен передать введеное данно из jsp*;
         return model;
     }
 
     @RequestMapping(value="/form", method=RequestMethod.POST)
-    public ModelAndView formSubmit(@ModelAttribute ModelAndView model) {
+    public ModelAndView formSubmit(@ModelAttribute ModelAndView model,@ModelAttribute("id") int id) {
         model.setViewName("result");
-        //int all = id;
-        model.addObject("form");//, all);
+        model.addObject("form", id);
         return model;
-    }*/
+    }
 }
