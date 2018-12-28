@@ -17,7 +17,7 @@ public interface CityDao extends CrudRepository<City, Long> {
 
     @Override
     public List<City> findAll();
-    
+
     public List<City> findByCityNameLike(String name);
  
     public List<City> findByDateOfFoundationGreaterThan(Date date);

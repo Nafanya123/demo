@@ -46,6 +46,7 @@ public class CityServiceImpl implements CityService{
     public List<City> getAll() {
         return cityDao.findAll();
     }
+
     @Override
     public long getCount() {
         return cityDao.count();

@@ -31,7 +31,7 @@ import javax.validation.Valid;
 public class CityController {
     @Autowired
     private CityServiceImpl cityServiceImpl;
-
+    private City city = new City();
     @RequestMapping(value = "/cities", method = RequestMethod.GET)
     public ModelAndView cities() {
         List<City> all = cityServiceImpl.getAll();   
@@ -49,17 +49,23 @@ public class CityController {
     }
 
     @RequestMapping(value="/form", method=RequestMethod.GET)
+    public String cit(Model model) {
+        model.addAttribute("form", city);
+        return "form";
+    }
+    /*@RequestMapping(value="/form", method=RequestMethod.GET)
     public ModelAndView formForm(ModelAndView model) {
+
         model = new ModelAndView("form");
-        model.addObject("formForm", new City());
+        model.addObject("form");
         return model;
     }
 
     @RequestMapping(value="/form", method=RequestMethod.POST)
-    public ModelAndView formSubmit(@ModelAttribute City city, ModelAndView model) {
+    public ModelAndView formSubmit(@ModelAttribute ModelAndView model) {
         model.setViewName("result");
-        model.addObject("formForm1", city);
-
+        //int all = id;
+        model.addObject("form");//, all);
         return model;
-    }
+    }*/
 }

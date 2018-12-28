@@ -7,7 +7,7 @@
     <body>
     <tr>
 
-    <form action="#" th:action="@{/form}" th:object="${formForm}" method="post">
+    <form action="#" th:action="@{/form}" th:object="${form}" method="post">
         <p>Id: <input type="text" th:field="*{id}" /></p>
         <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
     </form>

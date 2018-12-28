@@ -35,7 +35,6 @@ public class CityInit implements ApplicationRunner{
             City c1 = new City();
  
             c1.setCityName("Moskva");
-            c1.setId(22l);
  
             Date d1 = df.parse("1147-09-10");
             c1.setDateOfFoundation(d1);
