@@ -1,12 +1,14 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
+<html>
 <head>
-    <title>Getting Started: Handing Form Submission</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<title>Home</title>
 </head>
-<body>
-<h1>Result</h1>
-<p th:text="'id: '"${form.id}/>
-<a href="/form">Submit another message</a>
-</body>
+<body><center>
+
+<p>Город: ${city.cityName} добавлен</p>
+<form action="/cities">
+    <button type="submit">Нажми меня нежно</button>
+</form>
+</center></body>
 </html>
