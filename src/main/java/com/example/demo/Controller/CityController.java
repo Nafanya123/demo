@@ -33,7 +33,6 @@ import javax.validation.Valid;
  *
  * @author Sergey
  */
-@RestController
 public class CityController {
     @Autowired
     private CityServiceImpl cityServiceImpl;
