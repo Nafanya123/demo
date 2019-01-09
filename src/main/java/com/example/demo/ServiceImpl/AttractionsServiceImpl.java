@@ -26,15 +26,16 @@ public class AttractionsServiceImpl implements AttractionsService {
     }
 
     @Override
-    public Attractions findId(long id) {
-        Attractions findAttractions = attractionsDao.findOne(id);
-        return findAttractions;
-        //throw new UnsupportedOperationException("Not supported yet.");
+    public Attractions findId(long id)
+    {
+        Attractions findAttraction = attractionsDao.findOne(id);
+        return findAttraction;
     }
 
     @Override
     public Attractions getByAttractionsName(String name) {
-        return null;
+        Attractions findAttractionsName = attractionsDao.findByAttractionsName(name);
+        return findAttractionsName;
     }
 
     @Override

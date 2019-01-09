@@ -8,10 +8,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.web.bind.annotation.*;
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"hello","com.ensat.controllers", "com.ensat.services"})
-@EntityScan("com.ensat.entities")
-@EnableJpaRepositories("com.ensat.repositories")
-@RestController
 public class DemoApplication {
 
 	@GetMapping("/")

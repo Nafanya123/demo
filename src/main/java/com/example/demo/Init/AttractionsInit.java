@@ -5,7 +5,9 @@ import com.example.demo.ServiceImpl.AttractionsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.stereotype.Component;
 
+@Component
 public class AttractionsInit implements ApplicationRunner {
     private AttractionsServiceImpl attractionsServiceImpl;
 
@@ -27,7 +29,7 @@ public class AttractionsInit implements ApplicationRunner {
             Attractions a2 = new Attractions();
 
             a2.setAttractionsName("Test2");
-            a1.setAttractionsProperties("text test2");
+            a2.setAttractionsProperties("text test2");
 
             attractionsServiceImpl.addAttractions(a1);
             attractionsServiceImpl.addAttractions(a2);
