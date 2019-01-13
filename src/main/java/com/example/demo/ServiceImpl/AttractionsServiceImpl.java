@@ -21,8 +21,8 @@ public class AttractionsServiceImpl implements AttractionsService {
     }
 
     @Override
-    public void delete(long id) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public void delete(Attractions id) {;
+        attractionsDao.delete(id);
     }
 
     @Override

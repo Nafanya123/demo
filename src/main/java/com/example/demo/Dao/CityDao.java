@@ -11,7 +11,7 @@ import java.util.List;
 import com.example.demo.Model.City;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
- 
+
 @Repository
 public interface CityDao extends CrudRepository<City, Long> {
 
@@ -19,7 +19,7 @@ public interface CityDao extends CrudRepository<City, Long> {
     public List<City> findAll();
 
     public List<City> findByCityName(String name);
- 
+
     public List<City> findByDateOfFoundationGreaterThan(Date date);
- 
+
 }

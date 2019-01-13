@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.web.bind.annotation.*;
 
 @SpringBootApplication
+@RestController
 public class DemoApplication {
 
 	@GetMapping("/")

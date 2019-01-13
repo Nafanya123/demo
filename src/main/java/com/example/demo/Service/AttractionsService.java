@@ -5,7 +5,7 @@ import com.example.demo.Model.Attractions;
 public interface AttractionsService {
 
     Attractions addAttractions(Attractions attractions);
-    void delete(long id);
+    void delete(Attractions id);
     Attractions findId(long id);
     Attractions getByAttractionsName(String name);
     Attractions editCity(Attractions attractions);
