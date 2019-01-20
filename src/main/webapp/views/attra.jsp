@@ -21,64 +21,64 @@
     <body>
         <div class="container">
             <div class="card">
-            <div class="myForm">
-                <form>
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                  <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                      <div class="modal-body">
-                          <div class="form-group">
-                              <label for="attractionsName" class="col-form-label">Name:</label>
-                              <input type="text" class="form-control" id="attractionsName" name="attractionsName" value="" />
-                            </div>
-                          <div class="form-group">
-                              <label for="attractionsProperties" class="col-form-label">Test:</label>
-                              <input type="text" class="form-control" id="attractionsProperties" name="attractionsProperties" value="" />
-                            </div>
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <form action="/attra" method="post">
-                             <input type="hidden" name="id" value="${attractions.id}">
-                             <input class="btn btn-primary" type="submit" name="submit" value="save">
-                        </form>
-                      </div>
-                    </div>
-                  </div>
 
-                </div>
-            <div class="card-bloc">
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    </form>
+                <div class="myForm">
+                    <form:form action="/attra" method="post">
                     <c:forEach var="attractions" items="${attra}">
-                        <tr>
-                                <td>${attractions.id}</td>
-                                <td>${attractions.attractionsName}</td>
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <input type="hidden" name="id" value="${attractions.id}">
+                                            <label for="attractionsName" class="col-form-label">Name:</label>
+                                            <input type="text" class="form-control" id="attractionsName" name="attractionsName" value="${attractions.attractionsName}" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="attractionsProperties" class="col-form-label">Test:</label>
+                                            <input type="text" class="form-control" id="attractionsProperties" name="attractionsProperties" value="${attractions.attractionsProperties}" />
+                                        </div>
+                                    </div>
+                                <div class="modal-footer">
 
-                                <td> <a href="" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Edit</a></td>
-                                <td><form:form action="/attra" method="delete">
-                                     <input type="hidden" name="id" value="${attractions.id}">
-                                     <input class="btn btn-danger" type="submit" value="Delete">
-                                     </form:form></td>
-                        </tr>
-                    </c:forEach>
-                    </tbody>
-                </table>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <input class="btn btn-primary" type="submit" value="Save">
+                                   </div>
+                                </div>
+                            </div>
+                        </div>
+                        </c:forEach>
+                    </form:form>
+                <div class="card-bloc">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <c:forEach var="attractions" items="${attra}">
+                                <tr>
+                                    <td>${attractions.id}</td>
+                                    <td>${attractions.attractionsName}</td>
+                                    <td> <a href="" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Edit</a></td>
+                                    <td><form:form action="/delete/attra" method="post">
+                                    <input type="hidden" name="id" value="${attractions.id}">
+                                    <input class="btn btn-danger" type="submit" value="Delete">
+                                    </form:form></td>
+                                </tr>
+                            </c:forEach>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-
         </div>
-  </body>
+    </body>
 </html>

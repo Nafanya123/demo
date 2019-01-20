@@ -11,10 +11,10 @@ public class Attractions {
     @Column(name = "Id", nullable = false)
     private Long id;
 
-    @Column(name = "Attractions_Name", length = 64, nullable = false)
+    @Column(name = "Attractions_Name", length = 64, nullable = true)
     private String attractionsName;
 
-    @Column(name = "Attractions_Properties", nullable = false)
+    @Column(name = "Attractions_Properties", nullable = true)
     private String attractionsProperties;
 
 
