@@ -8,7 +8,6 @@ import org.springframework.expression.ParseException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -62,9 +61,6 @@ public class AttractionsController {
     }
 
 
-
-
-
     @RequestMapping(value = "/addatt", method = RequestMethod.GET)
     public ModelAndView addAtt() {
         return new ModelAndView("addatt", "attractions", new Attractions());
@@ -77,7 +73,7 @@ public class AttractionsController {
                                   @RequestParam("attractionsProperties") String attractionsProperties)
             throws ParseException {
         ModelAndView model = new ModelAndView();
-        model.setViewName("resultatt");
+        model.setViewName("redirect:/attra");
         attractions.setAttractionsName(attractionsName);
         attractions.setAttractionsProperties(attractionsProperties);
         model.addObject("attraction", attractionsServiceImpl.addAttractions(attractions));

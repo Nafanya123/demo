@@ -5,6 +5,7 @@
  */
 package com.example.demo.Service;
 
+import com.example.demo.Model.Attractions;
 import com.example.demo.Model.City;
 import java.util.List;
 

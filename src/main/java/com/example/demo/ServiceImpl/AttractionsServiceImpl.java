@@ -40,6 +40,7 @@ public class AttractionsServiceImpl implements AttractionsService {
 
     @Override
     public Attractions editCity(Attractions attractions) {
+        attractions = attractionsDao.save(attractions);
         return attractions;
     }
 

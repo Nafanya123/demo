@@ -17,7 +17,6 @@ public class Attractions {
     @Column(name = "Attractions_Properties", nullable = true)
     private String attractionsProperties;
 
-
     public Long getId() {
         return id;
     }

@@ -6,6 +6,7 @@
 package com.example.demo.ServiceImpl;
 
 import com.example.demo.Dao.CityDao;
+import com.example.demo.Model.Attractions;
 import com.example.demo.Service.CityService;
 import com.example.demo.Model.City;
 import java.util.List;

@@ -8,6 +8,7 @@ package com.example.demo.Dao;
 import java.util.Date;
 import java.util.List;
 
+import com.example.demo.Model.Attractions;
 import com.example.demo.Model.City;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;

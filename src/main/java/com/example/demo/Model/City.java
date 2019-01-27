@@ -6,6 +6,7 @@
 package com.example.demo.Model;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
