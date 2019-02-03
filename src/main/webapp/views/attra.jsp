@@ -43,6 +43,7 @@
                       <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                           <input type="hidden" class="form-control" id="ids" name="id" value=""/>
+                          <input type="hidden" class="form-control" id="cityId" name="cityId" value=""/>
                           <input class="btn btn-primary" type="submit" value="Save">
                       </div>
                   </div>
@@ -73,14 +74,15 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal"
-                                                                     data-target="#modalSave" id="attractionsName">Confirm</button>
+                                                                      data-target="#modalSave"
+                                                                      id="attractionsName">Confirm</button>
                     </div>
                 </div>
             </div>
         </div>
 
 
-    <form:form action="/resultatt" method="post">
+    <form:form action="/resultatt/attra/${cityId}" method="post">
       <div class="modal fade" id="modalSave" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
@@ -105,6 +107,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal" data-toggle="modal" data-target="#modalNew">Back</button>
+              <input type="hidden" class="form-control" name="cityId" value="${cityId}"/>
               <input class="btn btn-primary" type="submit" value="Save">
             </div>
           </div>
@@ -128,8 +131,10 @@
                                 <tr id="attractions-${attractions.id}">
                                     <td>${attractions.attractionsName}</td>
                                     <td>${attractions.attractionsProperties}</td>
+                                    <td>${attractions.cityId}</td>
                                     <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalEdit" data-id="${attractions.id}">Edit</button></td>
-                                        <form:form action="/delete/attra" method="post">
+
+                                        <form:form action="/delete/attra/${attractions.cityId}" method="post">
                                             <input type="hidden" name="id" value="${attractions.id}">
                                             <td><input class="btn btn-danger" type="submit" value="Delete">
                                         </form:form>
@@ -142,5 +147,5 @@
             </div>
         </div>
     </body>
-    <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalNew">New</button></td>
+    <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalNew" >New</button></td>
 </html>

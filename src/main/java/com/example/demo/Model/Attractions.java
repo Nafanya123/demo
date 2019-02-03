@@ -17,6 +17,9 @@ public class Attractions {
     @Column(name = "Attractions_Properties", nullable = true)
     private String attractionsProperties;
 
+    @Column(name = "city_Id", nullable = false)
+    private Long cityId;
+
     public Long getId() {
         return id;
     }
@@ -39,5 +42,14 @@ public class Attractions {
 
     public void setAttractionsProperties(String attractionsProperties) {
         this.attractionsProperties = attractionsProperties;
+    }
+
+
+    public Long getCityId() {
+        return cityId;
+    }
+
+    public void setCityId(Long cityId) {
+        this.cityId = cityId;
     }
 }

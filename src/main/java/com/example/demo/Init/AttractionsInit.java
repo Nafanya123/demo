@@ -22,17 +22,23 @@ public class AttractionsInit implements ApplicationRunner {
         long count = attractionsServiceImpl.getCount();
         if (count == 0) {
             Attractions a1 = new Attractions();
-
             a1.setAttractionsName("Test1");
             a1.setAttractionsProperties("text test1");
+            a1.setCityId(1l);
             //
             Attractions a2 = new Attractions();
-
             a2.setAttractionsName("Test2");
             a2.setAttractionsProperties("text test2");
+            a2.setCityId(2l);
+
+            Attractions a3 = new Attractions();
+            a3.setAttractionsName("Test3");
+            a3.setAttractionsProperties("text test3");
+            a3.setCityId(2l);
 
             attractionsServiceImpl.addAttractions(a1);
             attractionsServiceImpl.addAttractions(a2);
+            attractionsServiceImpl.addAttractions(a3);
         }
     }
 }

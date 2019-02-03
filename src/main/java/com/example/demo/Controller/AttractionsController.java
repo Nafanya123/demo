@@ -16,11 +16,20 @@ public class AttractionsController {
     @Autowired
     private AttractionsServiceImpl attractionsServiceImpl;
 
+
     @RequestMapping(value = "/attra", method = RequestMethod.GET)
     public ModelAndView attra() {
         List<Attractions> all = attractionsServiceImpl.getAll();
+        ModelAndView model = new ModelAndView();
+        model.setViewName("redirect:/cities");
+        return model;
+    }
+
+    @RequestMapping(value = "/attra/{cityId}", method = RequestMethod.GET)
+    public ModelAndView citiesTest(@ModelAttribute("attra") Attractions attractions,
+                                   @PathVariable("cityId") Long id) {
         ModelAndView model = new ModelAndView("attra");
-        model.addObject("attra", all);
+        model.addObject("attra", attractionsServiceImpl.getCityId(id));
         return model;
     }
 
@@ -28,7 +37,8 @@ public class AttractionsController {
     public ModelAndView editAtt(@ModelAttribute("attra") Attractions attractions,
                                 @RequestParam("id") Long id,
                                 @RequestParam("attractionsName") String attractionsName,
-                                @RequestParam("attractionsProperties") String attractionsProperties)
+                                @RequestParam("attractionsProperties") String attractionsProperties,
+                                @RequestParam("cityId") Long cityId)
     {
         ModelAndView model = new ModelAndView();
         attractions = attractionsServiceImpl.findId(id);
@@ -36,18 +46,18 @@ public class AttractionsController {
         attractions.setAttractionsProperties(attractionsProperties);
         attractionsServiceImpl.editCity(attractions);
         List<Attractions> all = attractionsServiceImpl.getAll();
-        model.setViewName("attra");
+        model.setViewName("redirect:/attra/"+ cityId);
         model.addObject("attra", all);
         return model;
     }
 
-    @RequestMapping(value = "/delete/attra", method = RequestMethod.GET)
+    @RequestMapping(value = "/delete/attra/{cityId}", method = RequestMethod.GET)
     public ModelAndView attraDelete() {
         ModelAndView model = new ModelAndView();
         model.setViewName("attra");
         return model;
     }
-    @RequestMapping(value = "/delete/attra", method = RequestMethod.POST)
+    @RequestMapping(value = "/delete/attra/{cityId}", method = RequestMethod.POST)
     public ModelAndView deleteAtt(@ModelAttribute("attra") Attractions attractions,
                                   @RequestParam("id") long id)
     {
@@ -55,7 +65,7 @@ public class AttractionsController {
         attractions = attractionsServiceImpl.findId(id);
         attractionsServiceImpl.delete(attractions);
         List<Attractions> all = attractionsServiceImpl.getAll();
-        model.setViewName("redirect:/attra");
+        model.setViewName("redirect:/attra/{cityId}");
         model.addObject("attra", all);
         return model;
     }
@@ -67,16 +77,16 @@ public class AttractionsController {
     }
 
 
-    @RequestMapping(value = "/resultatt", method = RequestMethod.POST)
-    public ModelAndView resultAtt(@ModelAttribute("attractions") Attractions attractions,
+    @RequestMapping(value = "/resultatt/attra/{cityId}", method = RequestMethod.POST)
+    public ModelAndView resultAtt(@ModelAttribute("attra") Attractions attractions,
                                   @RequestParam("attractionsName") String attractionsName,
                                   @RequestParam("attractionsProperties") String attractionsProperties)
             throws ParseException {
         ModelAndView model = new ModelAndView();
-        model.setViewName("redirect:/attra");
+        model.setViewName("redirect:/attra/{cityId}");
         attractions.setAttractionsName(attractionsName);
         attractions.setAttractionsProperties(attractionsProperties);
-        model.addObject("attraction", attractionsServiceImpl.addAttractions(attractions));
+        model.addObject("attra", attractionsServiceImpl.addAttractions(attractions));
         return model;
     }
 

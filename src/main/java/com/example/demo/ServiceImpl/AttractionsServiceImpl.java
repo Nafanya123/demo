@@ -38,6 +38,7 @@ public class AttractionsServiceImpl implements AttractionsService {
         return findAttractionsName;
     }
 
+
     @Override
     public Attractions editCity(Attractions attractions) {
         attractions = attractionsDao.save(attractions);
@@ -47,6 +48,10 @@ public class AttractionsServiceImpl implements AttractionsService {
     @Override
     public List<Attractions> getAll() {
         return attractionsDao.findAll();
+    }
+
+    public List<Attractions> getCityId(Long cityId) {
+        return attractionsDao.findByCityId(cityId);
     }
 
     @Override

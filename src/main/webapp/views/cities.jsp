@@ -16,24 +16,31 @@
    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-    </head>
-    <body>
+   </head>
+   <body>
     <div class="container">
-        <nav class="navbar navbar-light bg-light">
-          <form class="form-inline">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          </form>
-        </nav>
-
-        <div class="wrapper">
-            <div class="box">
-                <div class="list-group">
-                    <c:forEach var="city" items="${cities}">
-                        <br>
-                        <a href="#" class="list-group-item list-group-item-action">${city.cityName}</a>
-                    </c:forEach>
-                </div>
+        <form action="/cities" method="post" class="form-inline">
+            <nav class="navbar navbar-light bg-light">
+                  <input class="form-control mr-sm-2" type="text" id="cityId" name="cityName" value="" placeholder="Search" aria-label="Search">
+                  <input type="submit" value="Search" class="btn btn-outline-success my-2 my-sm-0"/>
+            </nav>
+        </form>
+        <div class="card">
+            <div class="card-bloc">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>City</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <c:forEach var="city" items="${cities}">
+                            <tr>
+                                <td>${city.cityName}</td>
+                            </tr>
+                        </c:forEach>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>

@@ -26,8 +26,8 @@ public class City {
 
     @Id
     @GeneratedValue
-    @Column(name = "Id", nullable = false)
-    private Long id;
+    @Column(name = "city_Id", nullable = false)
+    private Long cityId;
 
     @Column(name = "City_Name", length = 64, nullable = false)
     private String cityName;
@@ -36,12 +36,12 @@ public class City {
     @Column(name = "Date_Of_Foundation", nullable = false)
     private Date dateOfFoundation;
 
-    public Long getId() {
-        return id;
+    public Long getCityId() {
+        return cityId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setCityId(Long cityId) {
+        this.cityId = cityId;
     }
 
     public String getCityName() {

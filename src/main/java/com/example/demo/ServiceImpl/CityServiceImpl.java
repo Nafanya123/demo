@@ -35,9 +35,8 @@ public class CityServiceImpl implements CityService{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
-    public City getByCityName(String name) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<City> findByCityName(String name) {
+        return cityDao.findByCityNameLike("%"+name+"%");
     }
 
     @Override

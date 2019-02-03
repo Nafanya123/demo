@@ -11,6 +11,6 @@ public interface AttractionsDao extends CrudRepository<Attractions, Long> {
 
     @Override
     public List<Attractions> findAll();
-
     public Attractions findByAttractionsName(String name);
+    public List<Attractions> findByCityId(Long cityId);
 }

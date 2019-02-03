@@ -16,7 +16,7 @@ import java.util.List;
 public interface CityService {
     City addCity(City city);
     void delete(long id);
-    City getByCityName(String name);
+    Iterable<City> findByCityName(String name);
     City editCity(City city);
     Iterable<City> getAll();
     long getCount();

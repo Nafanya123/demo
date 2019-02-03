@@ -19,6 +19,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 /**
  *
  * @author Sergey
@@ -30,13 +33,39 @@ public class CityController {
     private static final DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 
     @RequestMapping(value = "/cities", method = RequestMethod.GET)
-    public ModelAndView cities() {
+    public @ResponseBody ModelAndView cities() {
+        ModelAndView model = new ModelAndView("cities");
+        model.addObject("cities", cityServiceImpl.getAll());
+
+
+        return model;
+    }
+
+    @RequestMapping(value = "/cities", method = RequestMethod.POST)
+    public @ResponseBody ModelAndView citiesTes(@RequestParam(value = "cityName") String cityName) {
+        ModelAndView model = new ModelAndView("cities");
+        List<City> a = cityServiceImpl.findByCityName(cityName);
+            model.addObject("cities", a);
+        return model;
+    }
+
+
+
+    /*@RequestMapping(value = "/cities", method = RequestMethod.GET)
+    public ModelAndView citiesSearch() {
         List<City> all = cityServiceImpl.getAll();
         ModelAndView model = new ModelAndView("cities");
         model.addObject("cities", all);
         return model;
-    }
+    }*/
 
+    @RequestMapping(value = "/cities/{cityId}")
+    public ModelAndView citiesTest(@PathVariable("cityId") Long id) {
+        List<City> all = cityServiceImpl.getAll();
+        ModelAndView model = new ModelAndView("cities");
+        model.setViewName("redirect:/attra/{cityId}");
+        return model;
+    }
 
     @RequestMapping(value = "/form", method = RequestMethod.GET)
     public ModelAndView form() {
