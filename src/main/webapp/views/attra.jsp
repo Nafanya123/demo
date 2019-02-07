@@ -12,6 +12,7 @@
 
    <!-- Bootstrap CSS -->
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link href="/css/attra.css" rel="stylesheet" type="text/css"/></link>
 
    <!-- jQuery first, then Tether, then Bootstrap JS. -->
       <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
@@ -43,7 +44,7 @@
                       <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                           <input type="hidden" class="form-control" id="ids" name="id" value=""/>
-                          <input type="hidden" class="form-control" id="cityId" name="cityId" value=""/>
+                          <input type="hidden" class="form-control" id="${cityId}" name="cityId" value="${cityId}"/>
                           <input class="btn btn-primary" type="submit" value="Save">
                       </div>
                   </div>
@@ -68,7 +69,8 @@
                         </div>
                         <div class="form-group properties">
                             <label for="attractionsProperties" class="col-form-label">Properties:</label>
-                            <input type="text" class="form-control" id="attractionsProperties" name="attractionsProperties" value=""/>
+                            <textarea class="form-control" id="attractionsProperties" name="attractionsProperties" value=""></textarea>
+
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -81,6 +83,27 @@
             </div>
         </div>
 
+      <div class="modal fade" id="modalError" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Error</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+             <h4>All fields must be filled!</h4>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal"
+                                                                                    data-target="#modalNew"
+                                                                                    id="attractionsName">Back</button>
+            </div>
+          </div>
+        </div>
+      </div>
 
     <form:form action="/resultatt/attra/${cityId}" method="post">
       <div class="modal fade" id="modalSave" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -117,6 +140,16 @@
 
     <body>
         <div class="container">
+            <nav class="navbar navbar-light bg-light" style="background-color: #5e5444; border-radius: 10px;">
+                <form action="/cities" method="post" class="form-inline">
+                    <a class="navbar-brand" style="color:#ffffff" href="/cities">Main</a>
+                    <input class="form-control mr-sm-2" type="text" id="cityId" name="cityName" value="" placeholder="City" aria-label="Search">
+                    <button class="btn btn-primary" type="submit">Search</button>
+              </form>
+            </nav>
+        </div>
+        <br>
+        <div class="container"style="width: 900px; margin: 0 auto;">
             <div class="card">
                 <div class="card-bloc">
                     <table class="table table-hover">
@@ -129,11 +162,9 @@
                         <tbody>
                             <c:forEach var="attractions" items="${attra}">
                                 <tr id="attractions-${attractions.id}">
-                                    <td>${attractions.attractionsName}</td>
+                                    <td><em>${attractions.attractionsName}</em></td>
                                     <td>${attractions.attractionsProperties}</td>
-                                    <td>${attractions.cityId}</td>
                                     <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalEdit" data-id="${attractions.id}">Edit</button></td>
-
                                         <form:form action="/delete/attra/${attractions.cityId}" method="post">
                                             <input type="hidden" name="id" value="${attractions.id}">
                                             <td><input class="btn btn-danger" type="submit" value="Delete">
@@ -145,7 +176,7 @@
                     </table>
                 </div>
             </div>
+            <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalNew" >New</button></td>
         </div>
     </body>
-    <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalNew" >New</button></td>
 </html>

@@ -17,14 +17,20 @@
    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
    </head>
+
    <body>
     <div class="container">
-        <form action="/cities" method="post" class="form-inline">
-            <nav class="navbar navbar-light bg-light">
-                  <input class="form-control mr-sm-2" type="text" id="cityId" name="cityName" value="" placeholder="Search" aria-label="Search">
-                  <input type="submit" value="Search" class="btn btn-outline-success my-2 my-sm-0"/>
-            </nav>
-        </form>
+        <nav class="navbar navbar-light bg-light" style="background-color: #5e5444; border-radius: 10px;">
+            <form action="/cities" method="post" class="form-inline">
+                <a class="navbar-brand" style="color:#ffffff" href="/cities">Main</a>
+                <input class="form-control mr-sm-2" type="text" id="cityId" name="cityName" value="" placeholder="City" aria-label="Search">
+                <button class="btn btn-primary" type="submit">Search</button>
+            </form>
+        </nav>
+        <br>
+    </div>
+    <br>
+    <div class="container">
         <div class="card">
             <div class="card-bloc">
                 <table class="table table-hover">
@@ -37,6 +43,22 @@
                         <c:forEach var="city" items="${cities}">
                             <tr>
                                 <td>${city.cityName}</td>
+                                <td><div class="btn-group dropright">
+                                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                      Information
+                                    </button>
+                                    <div class="dropdown-menu" x-placement="right-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(130px, 0px, 0px);">
+                                        <a class="dropdown-item" href="/cities/${city.cityId}">Attractions</a>
+                                        <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="#">Hotels</a>
+                                        <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="#">Restaurants</a>
+                                        <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="#">Cinemas</a>
+                                        </div>
+                                    </div>
+                                  </div>
+                                </td>
                             </tr>
                         </c:forEach>
                     </tbody>

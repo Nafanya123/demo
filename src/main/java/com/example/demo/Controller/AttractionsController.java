@@ -41,13 +41,16 @@ public class AttractionsController {
                                 @RequestParam("cityId") Long cityId)
     {
         ModelAndView model = new ModelAndView();
-        attractions = attractionsServiceImpl.findId(id);
-        attractions.setAttractionsName(attractionsName);
-        attractions.setAttractionsProperties(attractionsProperties);
-        attractionsServiceImpl.editCity(attractions);
-        List<Attractions> all = attractionsServiceImpl.getAll();
-        model.setViewName("redirect:/attra/"+ cityId);
-        model.addObject("attra", all);
+        if(attractionsName !="" && attractionsProperties !="")
+        {
+            attractions = attractionsServiceImpl.findId(id);
+            attractions.setAttractionsName(attractionsName);
+            attractions.setAttractionsProperties(attractionsProperties);
+            attractionsServiceImpl.editCity(attractions);
+            List<Attractions> all = attractionsServiceImpl.getAll();
+            model.setViewName("redirect:/attra/"+ cityId);
+            model.addObject("attra", all);
+        }
         return model;
     }
 
@@ -71,22 +74,21 @@ public class AttractionsController {
     }
 
 
-    @RequestMapping(value = "/addatt", method = RequestMethod.GET)
-    public ModelAndView addAtt() {
-        return new ModelAndView("addatt", "attractions", new Attractions());
-    }
-
-
     @RequestMapping(value = "/resultatt/attra/{cityId}", method = RequestMethod.POST)
     public ModelAndView resultAtt(@ModelAttribute("attra") Attractions attractions,
                                   @RequestParam("attractionsName") String attractionsName,
                                   @RequestParam("attractionsProperties") String attractionsProperties)
             throws ParseException {
-        ModelAndView model = new ModelAndView();
-        model.setViewName("redirect:/attra/{cityId}");
-        attractions.setAttractionsName(attractionsName);
-        attractions.setAttractionsProperties(attractionsProperties);
-        model.addObject("attra", attractionsServiceImpl.addAttractions(attractions));
+        ModelAndView model = null;
+        if(attractionsName != "" && attractionsProperties != "")
+        {
+            model = new ModelAndView();
+            model.setViewName("redirect:/attra/{cityId}");
+            attractions.setAttractionsName(attractionsName);
+            attractions.setAttractionsProperties(attractionsProperties);
+            model.addObject("attra", attractionsServiceImpl.addAttractions(attractions));
+        }
+
         return model;
     }
 

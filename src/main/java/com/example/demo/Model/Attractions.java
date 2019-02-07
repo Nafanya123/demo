@@ -14,7 +14,7 @@ public class Attractions {
     @Column(name = "Attractions_Name", length = 64, nullable = true)
     private String attractionsName;
 
-    @Column(name = "Attractions_Properties", nullable = true)
+    @Column(name = "Attractions_Properties", nullable = false)
     private String attractionsProperties;
 
     @Column(name = "city_Id", nullable = false)

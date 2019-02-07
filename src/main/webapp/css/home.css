@@ -1,5 +1,5 @@
 @media (min-width: 1200px) {
-    .form-inline{
+    .mr-sm-2{
         max-width: 500px;
          margin: 0 auto;
   max-height: 100%;
@@ -9,6 +9,13 @@
 @media (min-width: 1200px) {
     .list-group{
         max-width: 150px;
+         margin: 0 auto;
+  max-height: 100%;
+    }
+}
+@media (min-width: 1200px) {
+    .card{
+        max-width: 280px;
          margin: 0 auto;
   max-height: 100%;
     }

@@ -34,7 +34,7 @@ public class CityInit implements ApplicationRunner{
         if (count == 0) {
             City c1 = new City();
 
-            c1.setCityName("Moskva");
+            c1.setCityName("Moscow");
 
             Date d1 = df.parse("1147-09-10");
             c1.setDateOfFoundation(d1);
@@ -46,25 +46,20 @@ public class CityInit implements ApplicationRunner{
             c2.setDateOfFoundation(d2);
 
             City c3 = new City();
-            c3.setCityName("Samara1");
+            c3.setCityName("Tolyatti");
             Date d3 = df.parse("1586-06-11");
             c3.setDateOfFoundation(d3);
 
             City c4 = new City();
-            c4.setCityName("Samara2");
+            c4.setCityName("Sizran");
             Date d4 = df.parse("1586-06-11");
             c4.setDateOfFoundation(d4);
 
-            City c5 = new City();
-            c5.setCityName("Samara3");
-            Date d5 = df.parse("1586-06-11");
-            c5.setDateOfFoundation(d5);
 
             cityServiceImpl.addCity(c1);
             cityServiceImpl.addCity(c2);
             cityServiceImpl.addCity(c3);
             cityServiceImpl.addCity(c4);
-            cityServiceImpl.addCity(c5);
         }
     }
 }
